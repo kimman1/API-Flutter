@@ -6,13 +6,16 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
+    
     public class UserController : ApiController
     {
+       
         QLThuChiEntities db = new QLThuChiEntities();
         public IEnumerable<Login> GetUser()
         {
@@ -26,6 +29,19 @@ namespace WebApplication1.Controllers
                 return db.Logins.ToList();
             }
             
+        }
+        public IHttpActionResult GetUser(int id)
+        {
+            Login result = new Login();
+            result = db.Logins.Select(s => s).Where(s => s.ID == id).FirstOrDefault();
+            if (result != null)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent)); //NotFound();
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
     }
 }

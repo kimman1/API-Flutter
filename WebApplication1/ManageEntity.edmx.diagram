@@ -5,12 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0c6d4333383c421aa30a9e39d0fa8bff" Name="Diagram1">
-        <EntityTypeShape EntityType="QLThuChiModel.Category" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLThuChiModel.Login" Width="1.5" PointX="5.125" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLThuChiModel.Order" Width="1.5" PointX="6.375" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLThuChiModel.Product" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="QLThuChiModel.FK_CategoryID" ManuallyRouted="false" />
-        <AssociationConnector Association="QLThuChiModel.FK_ProductID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLThuChiModel.Login" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

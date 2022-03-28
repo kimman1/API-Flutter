@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="QLThuChiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Category">
-    <Key>
-      <PropertyRef Name="CategoryID" />
-    </Key>
-    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_CategoryID" FromRole="Category" ToRole="Product" />
-  </EntityType>
+  <EntityContainer Name="QLThuChiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Logins" EntityType="QLThuChiModel.Login" />
+  </EntityContainer>
   <EntityType Name="Login">
     <Key>
       <PropertyRef Name="ID" />
@@ -16,63 +11,4 @@
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductID" Type="Int32" />
-    <Property Name="OrderDate" Type="DateTime" Precision="0" />
-    <Property Name="Quantity" Type="Int32" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_ProductID" FromRole="Order" ToRole="Product" />
-  </EntityType>
-  <EntityType Name="Product">
-    <Key>
-      <PropertyRef Name="ProductID" />
-    </Key>
-    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryID" Type="Int32" />
-    <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="UnitPrice" Type="Int32" />
-    <NavigationProperty Name="Category" Relationship="Self.FK_CategoryID" FromRole="Product" ToRole="Category" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_ProductID" FromRole="Product" ToRole="Order" />
-  </EntityType>
-  <Association Name="FK_CategoryID">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Category">
-        <PropertyRef Name="CategoryID" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProductID">
-    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-    <End Role="Order" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="ProductID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="QLThuChiEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Logins" EntityType="Self.Login" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
-    <EntitySet Name="Products" EntityType="Self.Product" />
-    <AssociationSet Name="FK_CategoryID" Association="Self.FK_CategoryID">
-      <End Role="Category" EntitySet="Categories" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProductID" Association="Self.FK_ProductID">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="Order" EntitySet="Orders" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>
