@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
-This file is used by the publish/package process of your Web project. You can customize the behavior of this process
-by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+https://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAALYHsYXoF1U2BIp3VGd1CkQAAAAACAAAAAAADZgAAwAAAABAAAABEU8TfDWSamLAkH6h4pEU3AAAAAASAAACgAAAAEAAAAPOF3x0xQPTyz3Id9uQLrkEwAAAAtdgpalWsNaeMktj4kb/SUo6K+wkVi5U/Q7xL4rjqha+ce+g/8C6k8I6REMXEZ3uxFAAAAKg2Rzj3GlvdPkQ7pxr6Iqw7aFS2</EncryptedPassword>
-    <_PublishTargetUrl>ftp://155.254.244.34/www.kimman.somee.com</_PublishTargetUrl>
-    <History>True|2022-03-31T17:59:00.5437856Z;True|2022-03-31T21:16:46.4732324+07:00;True|2022-03-29T17:13:38.2933470+07:00;</History>
+    <_PublishTargetUrl>C:\Users\KimMan\Desktop\API Flutter for pushing</_PublishTargetUrl>
+    <History>True|2022-03-31T18:01:24.6600996Z;False|2022-04-01T01:00:43.2579573+07:00;</History>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/HelpPage/HelpPage.css">
@@ -336,10 +333,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/28/2018 13:04:24</publishTime>
     </File>
     <File Include="bin/WebApplication1.dll">
-      <publishTime>04/01/2022 00:54:10</publishTime>
+      <publishTime>04/01/2022 01:00:40</publishTime>
     </File>
     <File Include="bin/WebApplication1.pdb">
-      <publishTime>04/01/2022 00:54:10</publishTime>
+      <publishTime>04/01/2022 01:00:40</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
@@ -438,7 +435,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/27/2022 23:52:58</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/31/2022 21:07:23</publishTime>
+      <publishTime>04/01/2022 01:01:23</publishTime>
     </File>
   </ItemGroup>
 </Project>

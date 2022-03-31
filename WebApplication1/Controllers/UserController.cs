@@ -13,7 +13,7 @@ using WebApplication1.Custom_Model;
 
 namespace WebApplication1.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    //[EnableCors(origins: "http://kimman.somee.com/api", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
 
