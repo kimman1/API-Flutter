@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="0c6d4333383c421aa30a9e39d0fa8bff" Name="Diagram1">
         <EntityTypeShape EntityType="QLThuChiModel.Login" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QLThuChiModel.Category" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="QLThuChiModel.Item" Width="1.5" PointX="5.25" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -52,5 +52,24 @@ namespace WebApplication1.Controllers
             }
 
         }
+        public HttpResponseMessage PutItem(Item item)
+        {
+            Item itemFromDB = db.Items.Select(s => s).Where(s => s.ItemID == item.ItemID).FirstOrDefault();
+            if (itemFromDB != null)
+            {
+                itemFromDB.CategoryID = item.CategoryID;
+                itemFromDB.ItemName = item.ItemName;
+                itemFromDB.UnitPrice = item.UnitPrice;
+                db.SaveChanges();
+                return resp.responseOK(Request);
+            }
+            else
+            {
+                JsonReturnModel jsonResult = new JsonReturnModel();
+                jsonResult.message = "Did not find any matching record";
+                jsonResult.statusCode = "404";
+                return resp.responseMess(jsonResult, Request);
+            }
+        }
     }
 }

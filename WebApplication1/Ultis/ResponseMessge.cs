@@ -26,9 +26,9 @@ namespace WebApplication1.Ultis
             var resp = request.CreateResponse<List<Item>>(HttpStatusCode.OK, listItem);
             return resp;
         }
-        public HttpResponseMessage responseOK()
+        public HttpResponseMessage responseOK(HttpRequestMessage request)
         {
-            var resp = Request.CreateResponse(HttpStatusCode.OK);
+            var resp = request.CreateResponse(HttpStatusCode.OK);
             return resp;
         }
     }
