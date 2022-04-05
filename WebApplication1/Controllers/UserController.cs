@@ -65,7 +65,10 @@ namespace WebApplication1.Controllers
             {
                 db.Logins.Add(user);
                 db.SaveChanges();
-                return Ok(user.ID);
+                JsonReturnModel returnData = new JsonReturnModel();
+                returnData.message = "OK";
+                returnData.statusCode = "200";
+                return Json(returnData);
             }
             else
             {

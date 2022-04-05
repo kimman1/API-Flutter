@@ -32,6 +32,7 @@ namespace WebApplication1.Controllers
             {
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Not found this Item";
+                jsonResult.statusCode = "404";
                 return resp.responseMess(jsonResult, Request);
             }
             

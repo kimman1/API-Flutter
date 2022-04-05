@@ -31,20 +31,24 @@ namespace WebApplication1.Controllers
         [System.Web.Http.HttpPost]
         public HttpResponseMessage CreateCategory(Category cat)
         {
+            ResponseMessge resp = new ResponseMessge();
+            JsonReturnModel jsonReturn = new JsonReturnModel();
             Category catDB = db.Categories.Select(s => s).Where(s => s.CategoryName == cat.CategoryName).FirstOrDefault();
             if (catDB == null)
             {
                 db.Categories.Add(cat);
                 db.SaveChanges();
-                return Request.CreateResponse(HttpStatusCode.OK);
+                jsonReturn.statusCode = "200";
+                jsonReturn.message = "OK";
+                return resp.responseMess(jsonReturn, Request);
             }
             else
             {
-                List < JsonReturnModel > listResult = new List<JsonReturnModel>();
-                JsonReturnModel jsonReturn = new JsonReturnModel();
+                
+                
                 jsonReturn.message = "This Category has already exits";
                 jsonReturn.statusCode = "404";
-                listResult.Add(jsonReturn);
+                //listResult.Add(jsonReturn);
                 return resp.responseMess(jsonReturn,Request);
             }
         }
