@@ -10,6 +10,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using System.Web.Mvc;
 using WebApplication1.Custom_Model;
+using WebApplication1.Ultis;
 
 namespace WebApplication1.Controllers
 {
@@ -58,8 +59,11 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
         }
-        public IHttpActionResult CreateUser(Login user)
+        
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage CreateUser(Login user)
         {
+            ResponseMessge resp = new ResponseMessge();
             Login userfromDB = db.Logins.Select(s => s).Where(s => s.Username == user.Username).FirstOrDefault();
             if (userfromDB == null)
             {
@@ -68,14 +72,14 @@ namespace WebApplication1.Controllers
                 JsonReturnModel returnData = new JsonReturnModel();
                 returnData.message = "OK";
                 returnData.statusCode = "200";
-                return Json(returnData);
+                return resp.responseMessOK(returnData, Request);
             }
             else
             {
                 JsonReturnModel returnData = new JsonReturnModel();
                 returnData.message = "User has already exist";
                 returnData.statusCode = "404";
-                return Json(returnData);
+                return resp.responseMess(returnData, Request);
             }
 
         }

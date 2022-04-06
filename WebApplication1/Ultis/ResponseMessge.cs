@@ -16,6 +16,11 @@ namespace WebApplication1.Ultis
             var resp = request.CreateResponse<JsonReturnModel>(HttpStatusCode.NotFound, json);
             return resp;
         }
+        public HttpResponseMessage responseMessOK(JsonReturnModel json, HttpRequestMessage request)
+        {
+            var resp = request.CreateResponse<JsonReturnModel>(HttpStatusCode.OK, json);
+            return resp;
+        }
         public HttpResponseMessage responseMessItem(Item item, HttpRequestMessage request)
         {
             var resp = request.CreateResponse<Item>(HttpStatusCode.OK, item);
