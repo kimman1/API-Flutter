@@ -40,12 +40,10 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 jsonReturn.statusCode = "200";
                 jsonReturn.message = "OK";
-                return resp.responseMess(jsonReturn, Request);
+                return resp.responseMessOK(jsonReturn, Request);
             }
             else
             {
-                
-                
                 jsonReturn.message = "This Category has already exits";
                 jsonReturn.statusCode = "404";
                 //listResult.Add(jsonReturn);
@@ -60,9 +58,12 @@ namespace WebApplication1.Controllers
                 catDB.CategoryName = cat.CategoryName;
                 catDB.Description = cat.Description;
                 int result =  db.SaveChanges();
-                if (result == 1)
+                if (result == 1 || cat.CategoryName == catDB.CategoryName || cat.Description == catDB.Description)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK);
+                    JsonReturnModel jsonResult = new JsonReturnModel();
+                    jsonResult.message = "OK";
+                    jsonResult.statusCode = "200";
+                    return resp.responseMessOK(jsonResult, Request);
                 }
                 else
                 {
@@ -82,12 +83,15 @@ namespace WebApplication1.Controllers
         }
         public HttpResponseMessage DeleteCategory(int id)
         {
-            Category cat = db.Categories.Find(id);
+            Category cat = db.Categories.Select(s=>s).Where(s=>s.CategoryID == id).FirstOrDefault();
             db.Categories.Remove(cat);
             int result = db.SaveChanges();
             if (result == 1)
             {
-                return resp.responseOK(Request);
+                JsonReturnModel jsonResult = new JsonReturnModel();
+                jsonResult.statusCode = "200";
+                jsonResult.message = "OK";
+                return resp.responseMessOK(jsonResult,Request);
             }
             else
             {
