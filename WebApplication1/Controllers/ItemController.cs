@@ -91,5 +91,25 @@ namespace WebApplication1.Controllers
                 return resp.responseMess(jsonResult, Request);
             }
         }
+        public HttpResponseMessage DeleteItem(int id)
+        {
+            JsonReturnModel jsonResult = new JsonReturnModel();
+            Item itemForDelete = db.Items.Select(s => s).Where(s => s.ItemID == id).FirstOrDefault();
+            db.Items.Remove(itemForDelete);
+            int result = db.SaveChanges();
+            if (result == 1)
+            {
+                jsonResult.statusCode = "200";
+                jsonResult.message = "OK";
+                return resp.responseMessOK(jsonResult, Request);
+            }
+            else
+            {
+
+                jsonResult.message = "Error DB Server Site. Contact Admin";
+                jsonResult.statusCode = "404";
+                return resp.responseMess(jsonResult, Request);
+            }
+        }
     }
 }

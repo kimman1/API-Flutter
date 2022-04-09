@@ -21,12 +21,12 @@ namespace WebApplication1.Controllers
         {
             return db.Categories.ToList();
         }
-        public IHttpActionResult GetCategoryByID(int id)
+        public HttpResponseMessage GetCategoryByID(int id)
         {
             
             Category cat = new Category();
             cat = db.Categories.Select(s => s).Where(s => s.CategoryID == id).FirstOrDefault();
-            return Ok(cat);
+            return resp.responseMessCategory(cat, Request);
         }
         [System.Web.Http.HttpPost]
         public HttpResponseMessage CreateCategory(Category cat)

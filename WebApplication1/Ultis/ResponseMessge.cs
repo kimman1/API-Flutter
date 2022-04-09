@@ -21,6 +21,11 @@ namespace WebApplication1.Ultis
             var resp = request.CreateResponse<JsonReturnModel>(HttpStatusCode.OK, json);
             return resp;
         }
+        public HttpResponseMessage responseMessCategory(Category cat, HttpRequestMessage request)
+        {
+            var resp = request.CreateResponse<Category>(HttpStatusCode.OK, cat);
+            return resp;
+        }
         public HttpResponseMessage responseMessItem(Item item, HttpRequestMessage request)
         {
             var resp = request.CreateResponse<Item>(HttpStatusCode.OK, item);
