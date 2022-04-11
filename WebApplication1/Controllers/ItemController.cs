@@ -33,7 +33,7 @@ namespace WebApplication1.Controllers
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Not found this Item";
                 jsonResult.statusCode = "404";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
             
         }
@@ -49,7 +49,7 @@ namespace WebApplication1.Controllers
             {
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Not found this Item";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
 
         }
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Did not find any matching record";
                 jsonResult.statusCode = "404";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
         }
         public HttpResponseMessage CreateItem(Item item)
@@ -88,7 +88,7 @@ namespace WebApplication1.Controllers
                 
                 jsonResult.message = "Error DB Server Site. Contact Admin";
                 jsonResult.statusCode = "404";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
         }
         public HttpResponseMessage DeleteItem(int id)
@@ -108,7 +108,7 @@ namespace WebApplication1.Controllers
 
                 jsonResult.message = "Error DB Server Site. Contact Admin";
                 jsonResult.statusCode = "404";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
         }
     }

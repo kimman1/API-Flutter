@@ -4,6 +4,16 @@
     <EntitySet Name="Logins" EntityType="QLThuChiModel.Login" />
     <EntitySet Name="Categories" EntityType="QLThuChiModel.Category" />
     <EntitySet Name="Items" EntityType="QLThuChiModel.Item" />
+    <EntitySet Name="Orders" EntityType="QLThuChiModel.Order" />
+    <EntitySet Name="OrderDetails" EntityType="QLThuChiModel.OrderDetail" />
+    <AssociationSet Name="ItemID_FK" Association="QLThuChiModel.ItemID_FK">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="OrderID_FK" Association="QLThuChiModel.OrderID_FK">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Login">
     <Key>
@@ -29,5 +39,51 @@
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UnitPrice" Type="Int32" />
+    <NavigationProperty Name="OrderDetails" Relationship="QLThuChiModel.ItemID_FK" FromRole="Item" ToRole="OrderDetail" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TableID" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="QLThuChiModel.OrderID_FK" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Item" Relationship="QLThuChiModel.ItemID_FK" FromRole="OrderDetail" ToRole="Item" />
+    <NavigationProperty Name="Order" Relationship="QLThuChiModel.OrderID_FK" FromRole="OrderDetail" ToRole="Order" />
+  </EntityType>
+  <Association Name="ItemID_FK">
+    <End Type="QLThuChiModel.Item" Role="Item" Multiplicity="0..1" />
+    <End Type="QLThuChiModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderID_FK">
+    <End Type="QLThuChiModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="QLThuChiModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

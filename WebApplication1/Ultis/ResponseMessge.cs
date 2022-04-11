@@ -11,7 +11,7 @@ namespace WebApplication1.Ultis
 {
     public class ResponseMessge : ApiController
     {
-        public HttpResponseMessage responseMess(JsonReturnModel json, HttpRequestMessage request)
+        public HttpResponseMessage responseMessNotFound(JsonReturnModel json, HttpRequestMessage request)
         {
             var resp = request.CreateResponse<JsonReturnModel>(HttpStatusCode.NotFound, json);
             return resp;
@@ -34,6 +34,11 @@ namespace WebApplication1.Ultis
         public HttpResponseMessage responseMessItem(List<Item> listItem, HttpRequestMessage request)
         {
             var resp = request.CreateResponse<List<Item>>(HttpStatusCode.OK, listItem);
+            return resp;
+        }
+        public HttpResponseMessage responseMessObject(object listItem, HttpRequestMessage request)
+        {
+            var resp = request.CreateResponse<object>(HttpStatusCode.OK, listItem);
             return resp;
         }
         public HttpResponseMessage responseOK(HttpRequestMessage request)

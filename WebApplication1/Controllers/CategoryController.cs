@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
                 jsonReturn.message = "This Category has already exits";
                 jsonReturn.statusCode = "404";
                 //listResult.Add(jsonReturn);
-                return resp.responseMess(jsonReturn,Request);
+                return resp.responseMessNotFound(jsonReturn,Request);
             }
         }
         public HttpResponseMessage putCategory(Category cat)
@@ -70,7 +70,7 @@ namespace WebApplication1.Controllers
                     JsonReturnModel jsonResult = new JsonReturnModel();
                     jsonResult.message = "Error DB Server Site. Contact Admin";
                     jsonResult.statusCode = "404";
-                    return resp.responseMess(jsonResult, Request);
+                    return resp.responseMessNotFound(jsonResult, Request);
                 }
             }
             else
@@ -78,7 +78,7 @@ namespace WebApplication1.Controllers
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Not found this Category. Please contact Administrator";
                 jsonResult.statusCode = "404";
-                 return resp.responseMess(jsonResult, Request);
+                 return resp.responseMessNotFound(jsonResult, Request);
             }
         }
         public HttpResponseMessage DeleteCategory(int id)
@@ -98,7 +98,7 @@ namespace WebApplication1.Controllers
                 JsonReturnModel jsonResult = new JsonReturnModel();
                 jsonResult.message = "Not found this Category. Please contact Administrator";
                 jsonResult.statusCode = "404";
-                return resp.responseMess(jsonResult, Request);
+                return resp.responseMessNotFound(jsonResult, Request);
             }
         }
      

@@ -79,7 +79,7 @@ namespace WebApplication1.Controllers
                 JsonReturnModel returnData = new JsonReturnModel();
                 returnData.message = "User has already exist";
                 returnData.statusCode = "404";
-                return resp.responseMess(returnData, Request);
+                return resp.responseMessNotFound(returnData, Request);
             }
 
         }

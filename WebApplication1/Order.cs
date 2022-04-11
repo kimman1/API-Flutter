@@ -13,20 +13,21 @@ namespace WebApplication1
     using System;
     using System.Collections.Generic;
     
-    public partial class Item
+    public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Item()
+        public Order()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
         }
     
-        public int ItemID { get; set; }
-        public int CategoryID { get; set; }
-        public string ItemName { get; set; }
-        public Nullable<int> UnitPrice { get; set; }
-        [JsonIgnore]
+        public int OrderID { get; set; }
+        public Nullable<int> TableID { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
+        public string OrderUser { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
